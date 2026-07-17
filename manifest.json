@@ -1,0 +1,19 @@
+{
+  "manifest_version": 3,
+  "name": "Graphite Stack Groups",
+  "version": "1.0",
+  "description": "Groups PRs by stack in the Graphite inbox",
+  "content_scripts": [
+    {
+      "matches": ["https://app.graphite.com/*"],
+      "js": ["group.js"],
+      "run_at": "document_start"
+    },
+    {
+      "matches": ["https://app.graphite.com/*"],
+      "js": ["intercept.js"],
+      "run_at": "document_start",
+      "world": "MAIN"
+    }
+  ]
+}
