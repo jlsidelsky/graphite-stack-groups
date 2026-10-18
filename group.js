@@ -72,6 +72,8 @@ function regroup() {
 
 function regroupInner() {
   for (const el of document.querySelectorAll(".gsg-ctl")) el.remove();
+  // Inbox only: PR pages have stack tables with PR links too, and React re-renders them.
+  if (location.pathname.startsWith("/github/")) return;
   for (const tbody of document.querySelectorAll(
     'table tbody',
   )) {
