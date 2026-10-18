@@ -73,8 +73,9 @@ function regroup() {
 function regroupInner() {
   for (const el of document.querySelectorAll(".gsg-ctl")) el.remove();
   for (const tbody of document.querySelectorAll(
-    'table[class*="PrInboxTable"] tbody',
+    'table tbody',
   )) {
+    if (![...tbody.rows].some((row) => prNumber(row) !== null)) continue;
     const headers = new Map(
       [...tbody.querySelectorAll(".gsg-header")].map((h) => [
         h.dataset.gsgStack,
